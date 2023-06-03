@@ -1,6 +1,6 @@
 import os
 
-
+#code written by Jason Forsyth to compare to students' algorithm to achieve an accuracy score
 class EKGAnnotation:
 
     def __init__(self, _time, _sample, _annotation, _ch, _num, _db_extra, _rhythm_annotation=''):

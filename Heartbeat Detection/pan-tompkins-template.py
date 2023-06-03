@@ -1,6 +1,5 @@
 import numpy as np
-from scipy.signal import find_peaks, butter,iirfilter,lfilter
-
+from scipy.signal import find_peaks
 from ekg_testbench import EKGTestBench
 
 
@@ -36,32 +35,21 @@ def main(filepath):
     signal = np.square(signal)
 
     # pass through moving average window
-
-
-
-
     signal = np.convolve(signal,[1,1,1])
-
-    #signal = np.convolve(signal,a)
-
-    #signal = np.convolve(signal,[1,1,1])
-
-
-
 
 
     # use find_peaks to identify peaks within averaged/filtered data
     # save the peaks result and return as part of testbench result
-
     peaks,_ = find_peaks(signal,height=.031,distance=110)
 
 
 
-    # do not modify this line
+
     return signal,peaks
 
 
 # when running this file directly, this will execute first
+#written by Jason Forsyth to graph results and find an F1 score which measures accuracy in determining heartbeats
 if __name__ == "__main__":
 
     # place here so doesn't cause import error
@@ -112,7 +100,7 @@ if __name__ == "__main__":
 
     # if we wish to show the resulting plot
     if show_plot:
-        # make a nice plt of results
+        # make a nice plot of results
         plt.title('Signal for ' + database_name + " with detections")
 
         plt.plot(signal, label="Filtered Signal")
@@ -142,7 +130,7 @@ if __name__ == "__main__":
         for fn in remaining:
             debug_file.writelines(str(fn.sample) + "\n")
 
-        # close file that we writing
+        # close file that we are writing
         debug_file.close()
 
     if print_debug:
