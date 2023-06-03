@@ -26,25 +26,8 @@ def main(filepath):
     sample_frequency = 1/(time[1])
 
 
-    # identify one column to process. Call that column signal
-
+    # choose one column to process
     signal = V5
-
-    # pass data through LOW PASS FILTER (OPTIONAL)
-    #b,a= iirfilter(4, Wn= 2.5,btype='low',fs= sample_frequency,ftype='butter')
-
-    #signal = lfilter(b,a,signal)
-
-    #c,d= iirfilter(4, Wn= 4,btype='high',fs= sample_frequency,ftype='butter')
-
-    #signal = lfilter(c,d,signal)
-
-    #a,_ = butter(1,Wn=(220/60),btype='lowpass',fs=sample_frequency)
-
-
-
-    # pass data through HIGH PASS FILTER (OPTIONAL) to create BAND PASS result
-    ## your code here
 
     # pass data through differentiator
     signal = np.diff(signal)
