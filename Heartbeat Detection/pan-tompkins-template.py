@@ -70,7 +70,7 @@ if __name__ == "__main__":
     ### DO NOT MODIFY BELOW THIS LINE!!! ###
 
     # path to ekg folder
-    path_to_folder = "../../../data/ekg/"
+    path_to_folder = "../"
 
     # select a signal file to run
     signal_filepath = path_to_folder + database_name + ".csv"
