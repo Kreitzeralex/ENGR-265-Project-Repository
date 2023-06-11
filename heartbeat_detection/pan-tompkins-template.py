@@ -12,7 +12,7 @@ def main(filepath):
 
     # load data in matrix from CSV file; skip first two rows
 
-    data = np.loadtxt(filepath,skiprows=2,delimiter=',')
+    data = np.loadtxt(path,skiprows=2,delimiter=',')
 
 
     # save each vector as own variable
@@ -67,10 +67,8 @@ if __name__ == "__main__":
     # set to true if you wish to show a plot of each detection process
     show_plot = True
 
-    ### DO NOT MODIFY BELOW THIS LINE!!! ###
-
     # path to ekg folder
-    path_to_folder = "../"
+    path_to_folder = "./ekg/"
 
     # select a signal file to run
     signal_filepath = path_to_folder + database_name + ".csv"
