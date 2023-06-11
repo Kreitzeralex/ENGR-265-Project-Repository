@@ -3,7 +3,7 @@ import os
 import math
 import sys
 
-
+#parsing data file function written by Jason Forsyth
 def parse_tensile_file(path_to_file):
     file = open(path_to_file)
     # required meta-data
@@ -103,9 +103,6 @@ def calculate_elastic_modulus(strain, stress):
     intercept: y-intercept for linear region best fit of strain/stress data
     """
 
-       # Step 3a: find the point that is 40% of peak stress
-    # use from 0 to that value to create a linear plot
-
     # find max stress
     max_stress = max(stress)
 
@@ -113,9 +110,7 @@ def calculate_elastic_modulus(strain, stress):
     forty_percent = max_stress * 0.4
     Linear_region_stress = []
 
-    # subtract each point from the forty percent
-
-
+    # subtract each point from the forty percent to make it easy to find point closest to 40% stress
 
     for value in stress:
         new_point = abs(value - forty_percent)
@@ -126,18 +121,13 @@ def calculate_elastic_modulus(strain, stress):
 
     linear_index = np.argmin(Linear_region_stress)
 
+    # save the slope and intercept so we can plot the line later
     linear_stress = stress[0:linear_index]
     new_strain = strain[0:linear_index]
 
-    slope, intercept = np.polyfit(new_strain,linear_stress,1)
-
-
-
-    # Step 3d: find least squares fit to a line in the linear region
+    # find least squares fit to a line in the linear region
     # use 1-degree polynominal fit (line) from np.polyfit
-    # save the slope and intercept so we can plot the line later
-
-
+    slope, intercept = np.polyfit(new_strain,linear_stress,1)
 
     return linear_index, slope, intercept
 
@@ -177,9 +167,6 @@ if __name__ == "__main__":
     # modify this line to select different samples in the material folder
     sample_name = "C01A1045CR_1"
 
-
-    ### Do not modify below this line ###
-
     path_to_directory = "./"
     path_to_samples = path_to_directory + material_folder + "/"
 
@@ -190,13 +177,7 @@ if __name__ == "__main__":
     # sample diameter (mm), time (s), displacement (mm), force (kN), and strain (%)
     sample_diameter, time, displacement, force, strain = parse_tensile_file(path_to_file)
 
-    #plt.scatter(strain,force,label="Force - Strain")
-    #plt.xlabel("Strain (%)")
-    #plt.ylabel("Force (kN)")
-    #plt.title("Force Applied and Resulting Strain")
-    #plt.show()
-
-    # Step #1: Given the forces and sample diameter, calculate the strain
+    #Given the forces and sample diameter, calculate the strain
     stress = calculate_stress(force, sample_diameter)
 
 
@@ -211,7 +192,7 @@ if __name__ == "__main__":
     plt.title('Stress-Strain Curve for Sample ' + sample_name)
     plt.show()
 
-    # Step #2: Calculate basic parameters such as the ultimate tensile strength
+    #Calculate basic parameters such as the ultimate tensile strength
     # and fracture strain
 
     # calculate easy variables
@@ -224,8 +205,7 @@ if __name__ == "__main__":
     print("Ultimate Tensile Stress is ", ultimate_tensile_strength, "MPa")
     print("Fracture Strain is ", 100 * fracture_strain, " percent")
 
-    # Step #3: Use the Secant Modulus at 40% of Peak Strain
-    # to determine elastic modulus
+    #Use the Secant Modulus at 40% of Peak Strain to determine elastic modulus
 
     linear_index, slope, intercept = calculate_elastic_modulus(strain, stress)
     
@@ -255,7 +235,7 @@ if __name__ == "__main__":
     plt.ylabel('Stress (MPa)')
     plt.title('Linear Region for Sample ' + sample_name + ' with best fit')
 
-    ### Step 4: calculate 0.2% yield strength ###
+    #calculate 0.2% yield strength
     offset_line, intercept_index = calculate_percent_offset(slope, strain, stress)
 
     if offset_line is None or intercept_index == -1:
