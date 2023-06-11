@@ -1,7 +1,7 @@
 from writing_tensile_utils import *
 import os
 import sys
-import numpy as np
+
 
 def generate_csv_file(filename, results):
     """
@@ -78,7 +78,7 @@ def generate_csv_file(filename, results):
 if __name__ == "__main__":
 
     # get path to data/ folder
-    path_to_tensile_folder = "../../../data/tensile/"
+    path_to_tensile_folder = "./tensile"
 
     # list to hold all sample results
     results = []
