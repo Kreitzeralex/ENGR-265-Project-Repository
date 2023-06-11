@@ -58,17 +58,12 @@ def generate_csv_file(filename, results):
 
 
 
-        # Step 5: Stitch together a string, then write out the string via write().
         # Many variables above must be converted to a string via (). Commas also must be manually
         # stitched between each variable in the output. Do not round the data
-        # Make sure an endline character '\n' is always at the end of your string!
 
-        # uncomment the line below
         string_to_write = str((str(name)+",",str(material_type)+",",str(tensile_strength)+",",str(fracture_strain)+",",
                            str(modulus)+",",str(yield_strength)+'/n'))
 
-
-        # Finally, given that long string, write it to a file
 
         tensile_data.write(string_to_write)
 
