@@ -5,6 +5,7 @@
 Raw heartbeat data is given and we were asked to count the number of heartbeats. I used a modified Pan-Tompkins Algorithm to filter the data along with the find peaks function found in the scipy library to determine the peaks which were the heartbeats. Below is the raw voltage data and then the final filtered result. 
 
 ![image](https://github.com/Kreitzeralex/ENGR-265-Project-Repository/assets/123031007/3b77588f-acba-472a-918b-a0ee7a0480e3)
+                                              ## Raw Data
 
 
 
