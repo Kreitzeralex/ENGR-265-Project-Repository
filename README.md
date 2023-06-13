@@ -18,7 +18,7 @@ RSI is a measure of the relative strength of an athlete and it is measured using
 
 
 
-###Tensile Testing 
+### Tensile Testing 
 Material testing data was taken from another Engineering class at JMU and analysis was done in python. The script takes a csv file with stress and displacement data and outputs a stress-strain graph as well as a 0.2% offset yield chart. The chart made using matplotlib is shown below.
 ![image](https://github.com/Kreitzeralex/ENGR-265-Project-Repository/assets/123031007/56b5f6ef-0a70-4372-901e-d1a7e4d94dc9)
 
