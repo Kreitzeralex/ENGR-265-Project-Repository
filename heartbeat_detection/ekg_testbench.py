@@ -83,7 +83,7 @@ class EKGTestBench:
         # double check that responses are sorted; do not assume
         detector_responses.sort()
 
-        # acceptable solutions are within 5% of the annotation
+        # acceptable solutions are within 5%  of the annotation
         delta = 90
 
         # pair of responses and annotations that have been acceptable matched

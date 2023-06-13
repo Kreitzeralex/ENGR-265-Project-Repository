@@ -7,7 +7,7 @@ def main(filepath):
     if filepath == '':
         return list()
 
-    # import the CSV file using numpy
+    # import the CSV file using  numpy
     path = filepath
 
     # load data in matrix from CSV file; skip first two rows
