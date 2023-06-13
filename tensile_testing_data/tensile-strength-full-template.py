@@ -162,7 +162,7 @@ if __name__ == "__main__":
     import matplotlib.pyplot as plt
 
     # modify this line to select different materials/folders within tensile/
-    material_folder = "1045CR"
+    material_folder = "1045CR Materials"
 
     # modify this line to select different samples in the material folder
     sample_name = "C01A1045CR_1"
