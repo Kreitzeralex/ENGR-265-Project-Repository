@@ -134,7 +134,7 @@ def find_greatest_case_day(All_Data, location):
                 max = case_number
                 date = object.date
 
-            # replace previous case with the new case total
+            # replace previous case with the new case  total
             previous_case = object.cases
 
     print("The greatest number of cases in", location, "was", max, "and was recorded on", date)
