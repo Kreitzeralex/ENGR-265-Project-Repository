@@ -82,7 +82,6 @@ def main(full_path_to_file):
     # then may accidentally find a point that is "too early" in the data
 
     # walk through the list but start a few moments after the at the landing index
-    # since we know the take off point will be afterwards.
     for index in range(first_landing_index + 10, len(force_plate_list)):
 
         value = force_plate_list[index]
