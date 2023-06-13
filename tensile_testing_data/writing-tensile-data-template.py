@@ -44,7 +44,7 @@ def generate_csv_file(filename, results):
 
 
     # Step 4: Iterate through the list of results. Each sample will contain the data for an individual test
-    # The Materials Object will contain sample name, type, tensile strength, fracture strain, elastic modulus,
+    # The Materials Object will contain sample name,type, tensile strength, fracture strain, elastic modulus,
     # and yield strength data
     for r in results:
         # Each object in the results list is of class SampleMaterial. This is just a dummy class to hold variables

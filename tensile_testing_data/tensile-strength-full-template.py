@@ -145,7 +145,7 @@ def calculate_percent_offset(slope, strain, stress):
     # set the desired offset for the line
     offset = 0.002
 
-    # calculate the offset line: y=m(x-0.002) + 0
+    # calculate the offset line: y=m(x-0.002)+ 0
     offset_line = slope * (strain - 0.002)
 
     # measure distance from all points on graph to this line. Consider using the
