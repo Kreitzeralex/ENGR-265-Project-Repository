@@ -133,7 +133,7 @@ def calculate_yield_strength(strain, stress, modulus, offset=0.002):
     # calculate the offset line
     offset_line = modulus * (strain - offset)
 
-    # measure distance from all points on graph to this line
+    # measure  distance from all points on graph to this line
     distance = abs(stress - offset_line)
     intercept_index = np.argmin(distance)
 
