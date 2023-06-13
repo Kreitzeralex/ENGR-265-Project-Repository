@@ -38,7 +38,7 @@ def main(full_path_to_file):
 
 
 
-    # Step 2: After the baseline, find the first point that rises above that value
+    #After the baseline, find the first point that rises above that value
     # given some acceptable delta
 
     # when the signal exceeds the baseline plus delta, that is the landing point
@@ -48,8 +48,7 @@ def main(full_path_to_file):
     # index to time based upon the force plate sample rate
     first_landing_index = -1
 
-    # Approach 1: Make the array a list so we can iterate through it. There will be better and
-    # more Python friendly ways to do this but this is a general approach.
+    # Make the array a list so we can iterate through it.
     force_plate_list = force_plate.tolist()
 
     # walk through the list but start at the end of our baseline
@@ -66,7 +65,7 @@ def main(full_path_to_file):
             # break out of the loop to end iterating
             break
 
-    # Step 3: When force measurements return to the initial baseline the user has left the plate.
+    # When force measurements return to the initial baseline the user has left the plate.
     # Consider this the take off point.
 
     # when the signal falls below the baseline plus delta, that is the take off point
@@ -92,9 +91,9 @@ def main(full_path_to_file):
 
             break
 
-    # Step 4: The plate should remain near baseline while the user is in the air (there is no load).
+    # The plate should remain near baseline while the user is in the air (there is no load).
     # Once it rises above the baseline again, the user has landed. Consider this the second landing.
-    # This code block should be the same (functionally) as Step 2 but starting at a different point
+    # This code block should be the same (functionally) as the earlier step but starting at a different point
 
     # when the signal falls above the baseline plus delta, that is the take off point
     delta = 5
@@ -111,7 +110,7 @@ def main(full_path_to_file):
 
             break
 
-    # Step 5: calculate the time of contact on plate and time of flight in air
+    # calculate the time of contact on plate and time of flight in air
 
     # sampling rate is 1000 so each index is time in milliseconds
     time_first_landing = first_landing_index/(1000)
@@ -124,16 +123,13 @@ def main(full_path_to_file):
     # calculate tf and convert to seconds using the sampling rate
     time_of_flight = second_landing_index - take_off_index
 
-    # Step 6: Calculate the Reactive Strength Index
+    # Calculate the Reactive Strength Index
 
     # pull the local gravitational acceleration from scipy
     g = constants.g
 
     # RSI = (g*tf^2) / (8*tc)
     RSI = ((g * (time_of_flight) ** 2)/(8 * time_of_contact))/1000
-
-
-    ### Do not modify below this line ###
 
     # normalize the force plate data so that it will plot correctly when complete
     signal = force_plate - baseline
@@ -150,8 +146,6 @@ if __name__ == "__main__":
 
     # load force plate data (this path may change based upon where you place this file in your project)
     path_to_data_folder = "./drop-jump/force-plate/"
-
-    ### Do not modify below this line ###
 
     # put together directory and file to make a single relative path
     full_path_to_file = path_to_data_folder + filename
