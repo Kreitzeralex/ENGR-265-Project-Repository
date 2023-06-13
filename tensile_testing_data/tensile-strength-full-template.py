@@ -146,14 +146,14 @@ def calculate_percent_offset(slope, strain, stress):
     offset = 0.002
 
     # calculate the offset line: y=m(x-0.002) + 0
-    offset_line = None
+    offset_line = slope * (strain - 0.002)
 
     # measure distance from all points on graph to this line. Consider using the
     # abs() method to ensure values are positive
-    distance = None
+    distance = stress - offset_line
 
     # use argmin to find the index where the distance is minimal
-    intercept_index = -1
+    intercept_index = np.argmin(distance)
 
     return offset_line, intercept_index
 
@@ -230,7 +230,7 @@ if __name__ == "__main__":
     linear_strain = strain[0:linear_index]
     linear_stress = stress[0:linear_index]
 
-    plt.scatter(linear_strain, linear_stress, label="Stress - Strain")
+    plt.scatter(linear_strain, linear_stress)
     plt.xlabel('Strain (%)')
     plt.ylabel('Stress (MPa)')
     plt.title('Linear Region for Sample ' + sample_name + ' with best fit')
